@@ -1,0 +1,340 @@
+/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+    color: #0366d6;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+/* Sticky footer styles
+  -------------------------------------------------- */
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.border-top {
+    border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+    font-size: 1rem;
+    line-height: inherit;
+}
+
+/* Sticky footer styles
+  -------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+/* body {
+    margin-bottom: 60px;
+} */
+
+.footer {
+    position:absolute(margin-bottom);
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px;
+    /* Vertically center the text there */
+}
+
+body {
+    background-image: linear-gradient(to right, #cfe3ed, #96c4db);
+}
+
+header {
+    background-color: white;
+}
+
+footer {
+    background-color: white;
+}
+
+.mySlides {
+    display: none;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both
+}
+
+.column-66 {
+    float: left;
+    width: 66.66666%;
+    padding: 20px;
+}
+
+.column-33 {
+    float: left;
+    width: 33.33333%;
+    padding: 20px;
+}
+
+.large-font {
+    font-size: 48px;
+}
+
+.xlarge-font {
+    font-size: 64px
+}
+
+.button {
+    border: none;
+    color: white;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #04AA6D;
+}
+
+img.under {
+    display: block;
+}
+
+/* Float four columns side by side */
+.column {
+    float: left;
+    width: 25%;
+    padding: 0 5px;
+}
+
+.row {
+    margin: 0 -5px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+/* Style the counter cards */
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    text-align: center;
+    background-color: #444;
+    color: white;
+    margin-right: 10px;
+}
+
+.fa {
+    font-size: 50px;
+}
+
+.infocardContainer * {
+    font-family: 'Fira Sans Condensed', sans-serif;
+    font-weight: 300;
+}
+
+h2 {
+    font-weight: 600;
+    font-style: italic;
+    font-family: "Fira Sans Condensed", sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:visited {
+    color: #555566;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.infocardContainer {
+    display: flex;
+    height: 200px;
+    width: 200px;
+    border-radius: 100px;
+    background: rgb(0, 159, 255);
+    background: linear-gradient(121deg, rgba(255, 255, 255, 0) 13%, rgba(0, 159, 255, 1) 100%);
+    transition: all 500ms ease-in;
+    transition-delay: 1s;
+    margin: auto;
+    margin-top: 100px;
+    --margin-top: 100px;
+}
+
+.infocardContainer:hover {
+    width: 500px;
+    border-radius: 100px 10px 100px 100px;
+    transition: all 1s ease-out;
+}
+
+.infocardContainer div {
+    text-color: white;
+    flex-shrink: 1;
+    width: 100%;
+    --background-color: green;
+}
+
+.infocardContainer div * {
+    display: flex;
+    --flex: inherit;
+    overflow: hidden;
+    text-overflow: hidden;
+    --background-color: yellow;
+    color: white;
+    white-space: nowrap;
+    width: 0;
+    height: auto;
+    transition: all 450ms ease-in;
+    transition-delay: 1s;
+}
+
+.infocardContainer:hover div * {
+    --background-color: purple;
+    display: flex;
+    visibility: visible;
+    transition: all 1s ease-out;
+    transition-delay: 500ms;
+    width: 100%;
+    height: auto;
+}
+
+.infocardContainer #main,
+.infocardContainer #main img {
+    --background-color: red;
+    height: 200px;
+    width: 200px;
+    padding-right: 10px;
+    border-radius: 100%;
+    flex-shrink: 0;
+    object-fit: cover;
+}
+
+.infocardContainer #main img {
+    height: 180px;
+    width: 180px;
+    transition: none;
+    display: float;
+    position: relative;
+    border: 10px solid white;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+}
+
+.infocardContainer #textbois {
+    position: relative;
+}
+
+.infocardContainer #textbois #hotlinks {
+    max-width: 60%;
+    max-height: 30px;
+    --background-color: white;
+    position: absolute;
+    bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 13px;
+}
+
+.infocardContainer #textbois #hotlinks * {
+    background-color: white;
+    max-width: 30px;
+    --margin: 0 1px 0 1px;
+    border-radius: 25px;
+}
+
+/*TODO: animate copy main transition style for info*/
+/* .infocardContainer #textbois #hotlinks *:hover {} */
+
+
+
+.cow {
+    width: 100px;
+    border-radius: 20px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.hover {
+    box-shadow: 2px 2px 10px black;
+}
+
+.hover:hover {
+    box-shadow: 0 0 20px black;
+}
+
+#maindiv {
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+#div1 {
+    display: inline-block;
+    animation: marquee 20s linear infinite;
+    animation-delay: -10s;
+}
+
+#div2 {
+    display: inline-block;
+    animation: marquee2 20s linear infinite;
+    animation-delay: 0s;
+}
+
+@keyframes marquee {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes marquee2 {
+    from {
+        transform: translateX(0%);
+    }
+
+    to {
+        transform: translateX(-200%);
+    }
+}
