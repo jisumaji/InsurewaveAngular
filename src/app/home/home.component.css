@@ -86,10 +86,10 @@ img.under {
     font-size: 50px;
 }
 
-.infocardContainer * {
+/* .infocardContainer * {
     font-family: 'Fira Sans Condensed', sans-serif;
     font-weight: 300;
-}
+} */
 
 h2 {
     font-weight: 600;
@@ -109,7 +109,7 @@ a:hover {
     text-decoration: underline;
 }
 
-.infocardContainer {
+/* .infocardContainer {
     display: flex;
     height: 200px;
     width: 200px;
@@ -130,7 +130,7 @@ a:hover {
 }
 
 .infocardContainer div {
-    text-color: white;
+    color: white;
     flex-shrink: 1;
     width: 100%;
     --background-color: green;
@@ -202,7 +202,7 @@ a:hover {
     max-width: 30px;
     --margin: 0 1px 0 1px;
     border-radius: 25px;
-}
+} */
 
 /*TODO: animate copy main transition style for info*/
 /* .infocardContainer #textbois #hotlinks *:hover {} */

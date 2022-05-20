@@ -1,1 +1,214 @@
-<p>register works!</p>
+<html>
+
+<head>
+    <!-- <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#hiddenDiv").hide()
+            $("notMatch").show
+            $("#role").change(function () {
+                if ($(this).val() == 'insurer' || $(this).val() == 'broker') {
+                    $("#hiddenDiv").show()
+                }
+                else {
+                    $("#hiddenDiv").hide()
+                }
+            })
+
+            $("#ConfirmPassword").on('keyup', function () {
+                var password = $("#Password").val();
+                var confirmPassword = $("#ConfirmPassword").val();
+                if (password != confirmPassword) {
+                    $("#CheckPasswordMatch").html("Password does not match !").css("color", "red");
+                    $("#butt").prop("disabled", true);
+                }
+
+                else {
+                    $("#CheckPasswordMatch").html("Passwords match").css("color", "green");
+                    $("#butt").show();
+                    $("#butt").prop("disabled",false);
+                }
+
+            });
+            $("#Password").on('keyup', function () {
+                var password = $("#Password").val();
+                var confirmPassword = $("#ConfirmPassword").val();
+                if (password != confirmPassword) {
+                    $("#CheckPasswordMatch").html("Password does not match !").css("color", "red");
+                    $("#butt").prop("disabled", true);
+                }
+
+                else {
+                    $("#CheckPasswordMatch").html("Passwords match").css("color", "green");
+                    $("#butt").show();
+                    $("#butt").prop("disabled", false);
+                }
+
+            });
+
+            $('#eye').click(function () {
+
+                if ($(this).hasClass('fa-eye-slash')) {
+
+                    $(this).removeClass('fa-eye-slash');
+
+                    $(this).addClass('fa-eye');
+
+                    $('#Password').attr('type', 'text');
+
+                } else {
+
+                    $(this).removeClass('fa-eye');
+
+                    $(this).addClass('fa-eye-slash');
+
+                    $('#Password').attr('type', 'password');
+                }
+            });
+            $('#eye1').click(function () {
+
+                if ($(this).hasClass('fa-eye-slash')) {
+
+                    $(this).removeClass('fa-eye-slash');
+
+                    $(this).addClass('fa-eye');
+
+                    $('#ConfirmPassword').attr('type', 'text');
+
+                } else {
+
+                    $(this).removeClass('fa-eye');
+
+                    $(this).addClass('fa-eye-slash');
+
+                    $('#ConfirmPassword').attr('type', 'password');
+                }
+            });
+            @*$('#userId').on('keyup',function () {
+                var id = $('#userId').val();
+                const users = @ViewBag.allUsers;
+                console.log(users);
+                if (users.includes(id)) {
+                    $('#UserIdValid').html("User Id is not available").css("color", "red");
+                    $("#butt").prop("disabled", true);
+                }
+                else {
+                    $('#UserIdValid').html("User Id is available").css("color", "green");
+                    $("#butt").prop("disabled", false);
+                }
+            })*@
+
+        });
+    </script> -->
+</head>
+
+<body>
+    <div class="container" style="width: 1100px;">
+    <div class="row d-flex justify-content-center align-items-center h-80" >
+        <div class="card my-4" style="border-radius: 1rem; background-color: white; ">
+            <div class="row g-0" style="width:100%">
+                <div class="col-xl-6 ">
+                    <img src="  https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
+                        alt="Sample photo" class="img-fluid"
+                        style="border-radius: 1rem 0 0 1rem; height: 100%; width:100%;" />
+                </div>
+                <div class="col-xl-6">
+                    <div class="card-body p-md-5 text-black">
+                        <h3 class="mb-5 text-uppercase">Register</h3>
+                        <form asp-action="Register" id="form" onsubmit="addToModel()">
+                            <div class="form-outline">
+                                <label asp-for="UserId" class="form-label">User Id</label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1"><i
+                                                class="fa fa-user fa-2x"></i></span>
+                                    </div>
+                                    <input id="userId" asp-for="UserId" type="email"
+                                        class="form-control form-control-lg" required />
+                                </div>
+                                <em style="margin-top: 7px;" id="UserIdValid"></em>
+                                <span asp-validation-for="UserId" class="text-danger"></span>
+                            </div>
+                            <div class="form-outline">
+                                <label asp-for="Password" class="form-label">Password</label>
+                                <div class="input-group">
+                                    <input asp-for="Password" id="Password" placeholder="Enter a password"
+                                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                                        class="form-control form-control-lg" required />
+                                    <div class="input-group-append">
+                                        <div class="input-group-text"><i class="fa fa-eye fa-2x" id="eye"></i></div>
+                                    </div>
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-outline">
+                                <label class="form-label">Confirm Password</label>
+                                <div class="input-group">
+                                    <input type="password" class="form-control form-control-lg" id="ConfirmPassword"
+                                        placeholder="Confirm Password" name="confpassword" required>
+                                    <div class="input-group-append">
+                                        <div class="input-group-text"><i class="fa fa-eye fa-2x" id="eye1"></i></div>
+                                    </div>
+                                </div>
+                                <em style="margin-top: 7px;" id="CheckPasswordMatch"></em>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        <label asp-for="FirstName" class="form-label">First Name</label>
+                                        <input asp-for="FirstName" class="form-control form-control-lg" required />
+                                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        <label asp-for="LastName" class="form-label">Last Name</label>
+                                        <input asp-for="LastName" class="form-control form-control-lg" required />
+                                        <span asp-validation-for="LastName" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group mb-4">
+                                <label asp-for="Gender" class="form-label">Gender</label>
+                                <select name="Gender" class="form-control form-control-lg" asp for="Gender"
+                                    asp-items="@ViewBag.gender" required>
+                                    <option value="" selected hidden disabled> Select Gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="others">Others</option>
+                                </select>
+                                <span asp-validation-for="Gender" class="text-danger"></span>
+                            </div>
+                            <div class="form-group text-black">
+                                <label asp-for="Role" class="form-label">Select Role</label>
+                                <select name="Role" id="role" class="form-control form-control-lg" on="load()"
+                                    onclick="click()" asp for="Role" asp-items="@ViewBag.roles" required>
+                                    <option value="" selected hidden disabled> Select Role</option>
+                                    <option value="buyer">Buyer</option>
+                                    <option value="broker">Broker</option>
+                                    <option value="insurer">Insurer</option>
+                                </select>
+                                <span asp-validation-for="Role" class="text-danger"></span>
+                            </div>
+                            <div class="form-group text-black" id="hiddenDiv">
+                                <label asp-for="LicenseId" class="form-label">Enter License Id</label>
+                                <input asp-for="LicenseId" class="form-control form-control-lg" type="number" />
+                                <span asp-validation-for="LicenseId" class="text-danger"></span>
+                            </div>
+                            <div class="d-flex">
+                                    <input id="butt" type="submit" value="Register"
+                                        class="btn btn-success btn-block" />
+                                
+                                    <a class="btn btn-dark btn-block ms-auto" routerLink="/" routerLinkActive="active-link">Back</a>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
