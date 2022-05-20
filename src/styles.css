@@ -67,7 +67,7 @@ html {
 } */
 
 .footer {
-    position:absolute(margin-bottom);
+    position:absolute;
     bottom: 0;
     width: 100%;
     white-space: nowrap;

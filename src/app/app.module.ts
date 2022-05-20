@@ -8,6 +8,9 @@ import { LoginComponent } from './home/login/login.component';
 import { RegisterComponent } from './home/register/register.component';
 import { PrivacyComponent } from './home/privacy/privacy.component';
 import { ForgotPasswordComponent } from './home/login/forgot-password/forgot-password.component';
+import { BuyerComponent } from './buyer/buyer.component';
+import { BrokerComponent } from './broker/broker.component';
+import { InsurerComponent } from './insurer/insurer.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,10 @@ import { ForgotPasswordComponent } from './home/login/forgot-password/forgot-pas
     LoginComponent,
     RegisterComponent,
     PrivacyComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    BuyerComponent,
+    BrokerComponent,
+    InsurerComponent
   ],
   imports: [
     BrowserModule,
