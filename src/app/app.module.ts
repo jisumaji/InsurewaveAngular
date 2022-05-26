@@ -11,6 +11,7 @@ import { ForgotPasswordComponent } from './home/login/forgot-password/forgot-pas
 import { BuyerComponent } from './users/buyer/buyer.component';
 import { BrokerComponent } from './users/broker/broker.component';
 import { InsurerComponent } from './users/insurer/insurer.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { InsurerComponent } from './users/insurer/insurer.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
