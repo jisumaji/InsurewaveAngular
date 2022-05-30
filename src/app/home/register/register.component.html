@@ -10,30 +10,49 @@
                 <div class="col-xl-6">
                     <div class="card-body p-md-5 text-black">
                         <h3 class="mb-5 text-uppercase">Register</h3>
-                        <form asp-action="Register" id="form" onsubmit="addToModel()">
+                        <form id="form" [formGroup]="registerForm" (ngSubmit)="submitted=true">
                             <div class="form-outline">
-                                <label asp-for="UserId" class="form-label">User Id</label>
+                                <label class="form-label">User Id</label>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="basic-addon1"><i
                                                 class="fa fa-user fa-2x"></i></span>
                                     </div>
-                                    <input id="userId" asp-for="UserId" type="email"
+                                    <input id="userId" type="email" formControlName="email"
                                         class="form-control form-control-lg" required />
                                 </div>
+
+                                <div *ngIf="submitted && registerForm.controls['email'].errors" class="text-danger">
+                                    <span *ngIf="registerForm.controls['email'].errors['required']">
+                                        Email is required
+                                    </span>
+                                    <span *ngIf="registerForm.controls['email'].errors['email']">
+                                        Invalid Email
+                                    </span>
+                                </div>
+
                                 <em style="margin-top: 7px;" id="UserIdValid"></em>
-                                <span asp-validation-for="UserId" class="text-danger"></span>
+                                <span class="text-danger"></span>
                             </div>
                             <div class="form-outline">
-                                <label asp-for="Password" class="form-label">Password</label>
+                                <label class="form-label">Password</label>
                                 <div class="input-group">
-                                    <input asp-for="Password" id="Password" placeholder="Enter a password"
+                                    <input id="Password" placeholder="Enter a password"
                                         pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                                        class="form-control form-control-lg" required />
+                                        class="form-control form-control-lg" formControlName="password" />
                                     <div class="input-group-append">
                                         <div class="input-group-text"><i class="fa fa-eye fa-2x" id="eye"></i></div>
                                     </div>
-                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                    <span class="text-danger"></span>
+                                </div>
+                                <div class="text-danger" *ngIf="submitted && registerForm.controls['password'].errors">
+                                    <span *ngIf="registerForm.controls['password'].errors['required']">
+                                        Password is required
+                                    </span>
+                                    <span *ngIf="registerForm.controls['password'].errors['pattern']">
+                                        At least 8 characters with 1 uppercase, 1 lowercase, 1 special character, 1
+                                        digit
+                                    </span>
                                 </div>
                             </div>
                             <div class="form-outline">
@@ -51,44 +70,59 @@
                             <div class="row">
                                 <div class="col-md-6 mb-4">
                                     <div class="form-outline">
-                                        <label asp-for="FirstName" class="form-label">First Name</label>
-                                        <input asp-for="FirstName" class="form-control form-control-lg" required />
-                                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                                        <label class="form-label">First Name</label>
+                                        <input class="form-control form-control-lg" formControlName="firstName" />
+                                        <span class="text-danger"></span>
+                                    </div>
+                                    <div class="text-danger"
+                                        *ngIf="(submitted && registerForm.controls['firstName'].errors)">
+                                        <span *ngIf="registerForm.controls['firstName'].errors['required']"
+                                            pattern>First name is required</span>
+                                        <span *ngIf="registerForm.controls['firstName'].errors['pattern']">Only
+                                            alphabets are allowed</span>
                                     </div>
                                 </div>
                                 <div class="col-md-6 mb-4">
                                     <div class="form-outline">
-                                        <label asp-for="LastName" class="form-label">Last Name</label>
-                                        <input asp-for="LastName" class="form-control form-control-lg" required />
-                                        <span asp-validation-for="LastName" class="text-danger"></span>
+                                        <label class="form-label">Last Name</label>
+                                        <input class="form-control form-control-lg" formControlName="lastName" />
+                                        <span class="text-danger"></span>
+                                    </div>
+                                    <div class="text-danger"
+                                        *ngIf="(submitted && registerForm.controls['lastName'].errors)">
+                                        <span *ngIf="registerForm.controls['lastName'].errors['required']" pattern>Last
+                                            name is required</span>
+                                        <span *ngIf="registerForm.controls['lastName'].errors['pattern']">Only
+                                            alphabets are allowed</span>
                                     </div>
                                 </div>
                             </div>
+                            
                             <div class="form-group mb-4">
-                                <label asp-for="Gender" class="form-label">Gender</label>
+                                <label class="form-label">Gender</label>
                                 <select name="Gender" class="form-control form-control-lg" required>
                                     <option value="" selected hidden disabled> Select Gender</option>
                                     <option value="male">Male</option>
                                     <option value="female">Female</option>
                                     <option value="others">Others</option>
                                 </select>
-                                <span asp-validation-for="Gender" class="text-danger"></span>
+                                <span class="text-danger"></span>
                             </div>
                             <div class="form-group text-black">
                                 <label class="form-label">Select Role</label>
-                                <select [(ngModel)]="buyerSelected" name="Role" id="role"
+                                <select #role (change)="show(role.value)" name="Role" id="role"
                                     class="form-control form-control-lg" on="load()" onclick="click()" required>
                                     <option value="" selected hidden disabled> Select Role</option>
                                     <option value="buyer">Buyer</option>
                                     <option value="broker">Broker</option>
                                     <option value="insurer">Insurer</option>
                                 </select>
-                                <span asp-validation-for="Role" class="text-danger"></span>
+                                <span class="text-danger"></span>
                             </div>
                             <div class="form-group text-black" id="hiddenDiv" [hidden]="buyerSelected=='buyer'">
-                                <label asp-for="LicenseId" class="form-label">Enter License Id</label>
-                                <input asp-for="LicenseId" class="form-control form-control-lg" type="number" />
-                                <span asp-validation-for="LicenseId" class="text-danger"></span>
+                                <label class="form-label">Enter License Id</label>
+                                <input class="form-control form-control-lg" type="number" />
+                                <span class="text-danger"></span>
                             </div>
                             <div class="d-flex">
                                 <input id="butt" type="submit" value="Register" class="btn btn-success btn-block" />

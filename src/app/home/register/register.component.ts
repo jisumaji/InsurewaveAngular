@@ -7,18 +7,22 @@ declare var $: any;
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  submitted = false;
+  buyerSelected='buyer';
+  registerForm: FormGroup | any;
+  constructor(private builder: FormBuilder) { }
 
-  buyerSelected!: string;
-  registerForm?:FormGroup;
-  constructor(private builder: FormBuilder){}
+  show(value: any) {
+    this.buyerSelected= value;
+  }
+
   ngOnInit(): void {
 
-    this.registerForm=this.builder.group({
-      email:['',[Validators.required,Validators.email]],
-      password:['',[Validators.required,Validators.pattern('(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}')]],
-      firstName:['',[Validators.required,Validators.pattern('a-zA-Z')]],
-      lastName:['',[Validators.required,Validators.pattern('a-zA-Z')]]
-
+    this.registerForm = this.builder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.pattern('(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}')]],
+      firstName: ['', [Validators.required, Validators.pattern('^[A-Za-z]+$')]],
+      lastName: ['', [Validators.required, Validators.pattern('^[A-Za-z]+$')]]
     })
 
     $("#ConfirmPassword").on('keyup', function () {

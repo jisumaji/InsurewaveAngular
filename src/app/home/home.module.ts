@@ -8,13 +8,15 @@ import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home.component';
 import { RouterModule } from '@angular/router';
 import {ReactiveFormsModule} from '@angular/forms'
+import { ForgotPasswordComponent } from './login/forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
     LoginComponent,
     PrivacyComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     CommonModule,
