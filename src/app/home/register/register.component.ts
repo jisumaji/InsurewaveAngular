@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 declare var $: any;
 @Component({
   selector: 'app-register',
@@ -7,9 +8,19 @@ declare var $: any;
 })
 export class RegisterComponent implements OnInit {
 
-  constructor() { }
   buyerSelected!: string;
+  registerForm?:FormGroup;
+  constructor(private builder: FormBuilder){}
   ngOnInit(): void {
+
+    this.registerForm=this.builder.group({
+      email:['',[Validators.required,Validators.email]],
+      password:['',[Validators.required,Validators.pattern('(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}')]],
+      firstName:['',[Validators.required,Validators.pattern('a-zA-Z')]],
+      lastName:['',[Validators.required,Validators.pattern('a-zA-Z')]]
+
+    })
+
     $("#ConfirmPassword").on('keyup', function () {
       var password = $("#Password").val();
       var confirmPassword = $("#ConfirmPassword").val();
