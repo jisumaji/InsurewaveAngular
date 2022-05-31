@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
       password: ['', [Validators.required, Validators.pattern('(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}')]]
     });
   }
+ 
   submit() {
     this.submitted = true;
     if (this.loginForm.valid) {

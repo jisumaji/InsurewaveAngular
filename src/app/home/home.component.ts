@@ -17,5 +17,12 @@ export class HomeComponent implements OnInit {
 
      this.user.login('abc@gmail.com','Ab@12345').subscribe((val:string)=>{console.log(val)})
   }
-
+  gotop()
+  {
+    window.scroll({
+      top: 0, 
+      left: 0, 
+      behavior:'smooth'
+    });
+  }
 }
