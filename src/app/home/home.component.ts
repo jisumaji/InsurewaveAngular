@@ -14,8 +14,6 @@ export class HomeComponent implements OnInit {
     $('.carousel').carousel({
       interval: 1000
     })
-
-     this.user.login('abc@gmail.com','Ab@12345').subscribe((val:string)=>{console.log(val)})
   }
   gotop()
   {
