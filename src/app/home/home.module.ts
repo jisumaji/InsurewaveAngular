@@ -9,7 +9,8 @@ import { HomeComponent } from './home.component';
 import { RouterModule } from '@angular/router';
 import {ReactiveFormsModule} from '@angular/forms'
 import { ForgotPasswordComponent } from './login/forgot-password/forgot-password.component';
-
+import {HttpClientModule} from '@angular/common/http'
+import {UserDetailsService} from './user-details.service'
 @NgModule({
   declarations: [
     LoginComponent,
@@ -23,7 +24,9 @@ import { ForgotPasswordComponent } from './login/forgot-password/forgot-password
     HomeRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     RouterModule.forChild(routes)
-  ]
+  ],
+  providers:[UserDetailsService]
 })
 export class HomeModule { }
