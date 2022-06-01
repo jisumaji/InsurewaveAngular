@@ -10,7 +10,7 @@
                 <div class="col-xl-6">
                     <div class="card-body p-md-5 text-black">
                         <h3 class="mb-5 text-uppercase">Register</h3>
-                        <form id="form" [formGroup]="registerForm" (ngSubmit)="submitted=true">
+                        <form id="form" [formGroup]="registerForm" (ngSubmit)="register()">
                             <div class="form-outline">
                                 <label class="form-label">User Id</label>
                                 <div class="input-group mb-3">
@@ -18,15 +18,15 @@
                                         <span class="input-group-text" id="basic-addon1"><i
                                                 class="fa fa-user fa-2x"></i></span>
                                     </div>
-                                    <input id="userId" type="email" formControlName="email"
+                                    <input id="userId" type="email" formControlName="userId"
                                         class="form-control form-control-lg" required />
                                 </div>
 
-                                <div *ngIf="submitted && registerForm.controls['email'].errors" class="text-danger">
-                                    <span *ngIf="registerForm.controls['email'].errors['required']">
+                                <div *ngIf="submitted && registerForm.controls['userId'].errors" class="text-danger">
+                                    <span *ngIf="registerForm.controls['userId'].errors['required']">
                                         Email is required
                                     </span>
-                                    <span *ngIf="registerForm.controls['email'].errors['email']">
+                                    <span *ngIf="registerForm.controls['userId'].errors['email']">
                                         Invalid Email
                                     </span>
                                 </div>
@@ -100,29 +100,29 @@
                             
                             <div class="form-group mb-4">
                                 <label class="form-label">Gender</label>
-                                <select name="Gender" class="form-control form-control-lg" required>
+                                <select name="Gender" formControlName="gender" class="form-control form-control-lg">
                                     <option value="" selected hidden disabled> Select Gender</option>
                                     <option value="male">Male</option>
                                     <option value="female">Female</option>
                                     <option value="others">Others</option>
                                 </select>
-                                <span class="text-danger"></span>
+                                <span class="text-danger" *ngIf="submitted && this.registerForm.controls['gender'].errors">Gender is required</span>
                             </div>
                             <div class="form-group text-black">
                                 <label class="form-label">Select Role</label>
-                                <select #role (change)="show(role.value)" name="Role" id="role"
-                                    class="form-control form-control-lg" on="load()" onclick="click()" required>
+                                <select #role (change)="show(role.value)" formControlName="role" id="role"
+                                    class="form-control form-control-lg" on="load()" onclick="click()">
                                     <option value="" selected hidden disabled> Select Role</option>
                                     <option value="buyer">Buyer</option>
                                     <option value="broker">Broker</option>
                                     <option value="insurer">Insurer</option>
                                 </select>
-                                <span class="text-danger"></span>
+                                <span class="text-danger" *ngIf="submitted && this.registerForm.controls['role'].errors">Role is required</span>
                             </div>
                             <div class="form-group text-black" id="hiddenDiv" [hidden]="buyerSelected=='buyer'">
                                 <label class="form-label">Enter License Id</label>
-                                <input class="form-control form-control-lg" type="number" />
-                                <span class="text-danger"></span>
+                                <input class="form-control form-control-lg" formControlName="licenseId" type="number" />
+                                <span class="text-danger" *ngIf="submitted && this.registerForm.controls['licenseId'].errors">License ID is required</span>
                             </div>
                             <div class="d-flex">
                                 <input id="butt" type="submit" value="Register" class="btn btn-success btn-block" />

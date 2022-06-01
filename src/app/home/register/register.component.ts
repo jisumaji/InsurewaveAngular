@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { IUserDetails } from '../models/userDetails.model';
+import { UserDetailsService } from '../user-details.service'
+import {Router} from'@angular/router'
 declare var $: any;
 @Component({
   selector: 'app-register',
@@ -8,21 +11,59 @@ declare var $: any;
 })
 export class RegisterComponent implements OnInit {
   submitted = false;
-  buyerSelected='buyer';
+  buyerSelected = 'buyer';
   registerForm: FormGroup | any;
-  constructor(private builder: FormBuilder) { }
+  userDetails: IUserDetails | any;
+  constructor(private builder: FormBuilder, private user: UserDetailsService,private route:Router) { }
 
   show(value: any) {
-    this.buyerSelected= value;
+    this.buyerSelected = value;
   }
-
+  register() {
+    this.submitted = true;
+    // console.log(this.registerForm.value)    
+    if (this.registerForm.valid) {
+      /*this.userDetails: IUserDetails = {
+        userId: this.registerForm.get('userId').value,
+        password: this.registerForm.get('password').value,
+        firstName: this.registerForm.get('firstName').value,
+        lastName: this.registerForm.get('lastName').value,
+        gender: this.registerForm.get('gender').value,
+        role: this.registerForm.get('role').value,
+        licenseId: this.registerForm.get('licenseId').value
+      }*/
+      this.userDetails = this.registerForm.value
+      console.log(this.userDetails);
+      this.user.register(this.userDetails).subscribe(/*(res) => {
+        console.log(res);
+        
+      }*/
+     
+      );
+      this.route.navigate(['/login']);
+    }
+  }
   ngOnInit(): void {
 
     this.registerForm = this.builder.group({
-      email: ['', [Validators.required, Validators.email]],
+      userId: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.pattern('(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}')]],
       firstName: ['', [Validators.required, Validators.pattern('^[A-Za-z]+$')]],
-      lastName: ['', [Validators.required, Validators.pattern('^[A-Za-z]+$')]]
+      lastName: ['', [Validators.required, Validators.pattern('^[A-Za-z]+$')]],
+      gender: ['', [Validators.required]],
+      role: ['', Validators.required],
+      licenseId: [null]
+    })
+    this.registerForm.get('role').valueChanges.subscribe((ab: string) => {
+      const id = this.registerForm.get('licenseId')
+      if (ab == 'broker' || ab == 'insurer') {
+        id.setValidators([Validators.required]);
+      }
+      else{
+        id.clearValidators();
+        id.value=null;
+      }
+      id.updateValueAndValidity();
     })
 
     $("#ConfirmPassword").on('keyup', function () {
