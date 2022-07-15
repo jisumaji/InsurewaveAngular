@@ -1,17 +1,19 @@
+<body>
     <header>
         <nav class="navbar navbar-dark bg-dark navbar-expand-sm navbar-toggleable-sm  border-bottom box-shadow  ">
             <div class="container-fluid">
 
                 <a class="navbar-brand" href="#">
-                    <img src="/css/Insurewave.png" alt="" width="80" height="60" class="d-inline-block align-text-top">
+                    <img src="./assets/insurewave.png" alt="" width="80" height="60"
+                        class="d-inline-block align-text-top">
 
                 </a>
 
 
 
-<h4 class="navbar-brand text-light" ><strong>Insurewave</strong></h4>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                <h4 class="navbar-brand text-light"><strong>Insurewave</strong></h4>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
@@ -20,15 +22,18 @@
                             <a class="nav-link  " asp-controller="Buyer" asp-action="Index"><strong>Home</strong></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link  " asp-controller="Buyer" asp-action="AddAssets"><strong>Add Asset</strong></a>
+                            <a class="nav-link  " asp-controller="Buyer" asp-action="AddAssets"><strong>Add
+                                    Asset</strong></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link  " asp-controller="Buyer" asp-action="DisplayAssets"><strong>Display Assets</strong></a>
+                            <a class="nav-link  " asp-controller="Buyer" asp-action="DisplayAssets"><strong>Display
+                                    Assets</strong></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link  " asp-controller="Buyer" asp-action="Payment"><strong>Payment</strong></a>
+                            <a class="nav-link  " asp-controller="Buyer"
+                                asp-action="Payment"><strong>Payment</strong></a>
                         </li>
-                        @*
+                        <!--
         <li class="nav-item">
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:white">
@@ -36,12 +41,12 @@
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item" asp-action="AddAssets">Add Asset</a>
-                    <!--<a class="dropdown-item" asp-action="EditPolicy">Update</a>-->
+                    <a class="dropdown-item" asp-action="EditPolicy">Update</a>
                     <a class="dropdown-item" asp-action="DisplayAssets">Asset Details</a>
                 </div>
             </div>
         </li>
-                        *@
+               -->
                     </ul>
                     <ul class="navbar-nav ml-auto">
 
@@ -65,16 +70,15 @@
             </div>
         </nav>
     </header>
+    
     <div class="container-fluid">
         <main role="main" class="pb-3">
-            @RenderBody()
+            <router-outlet></router-outlet>
         </main>
     </div>
-
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
-
-
+</body>

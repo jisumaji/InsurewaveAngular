@@ -5,7 +5,7 @@ import { BuyerComponent } from './buyer/buyer.component';
 import { Error404Component } from './error404/error404.component';
 import { InsurerComponent } from './insurer/insurer.component';
 
-const routes: Routes = [
+export const routes: Routes = [
   {path:'buyer',component:BuyerComponent},
   {path:'broker',component:BrokerComponent},
   {path:'insurer',component:InsurerComponent},
