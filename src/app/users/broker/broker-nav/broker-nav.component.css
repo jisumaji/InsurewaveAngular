@@ -1,0 +1,15 @@
+body {
+    background-image: linear-gradient(to right,#cfe3ed, #96c4db);
+}
+
+header {
+    background-color: white;
+}
+
+footer {
+    background-color: white;
+}
+
+li {
+    padding-left: 15px;
+}

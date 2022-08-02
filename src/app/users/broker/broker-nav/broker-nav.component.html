@@ -1,0 +1,42 @@
+<header>
+    <nav class="navbar bg-dark navbar-dark navbar-expand-sm navbar-toggleable-sm  border-bottom box-shadow  ">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="../../../../assets/insurewave.png" alt="" width="80" height="60" class="d-inline-block align-text-top">
+            </a>
+            <h4 class="navbar-brand text-light"><strong>Insurewave</strong></h4>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav ">
+                    <li class="nav-item">
+                        <a class="nav-link " routerLink="home"><strong>Home</strong></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " routerLink="requests"><strong>Requests</strong></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " routerLink="policies"><strong>Policies</strong></a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link"><strong>Welcome @Context.Session.GetString("FirstName")</strong></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " asp-controller="Broker" asp-action="GetDetails">
+                            <i class="fa fa-user-circle fa-2x" aria-hidden="true" style="color:steelblue"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " asp-controller="Login" asp-action="LogOut">
+                            <i class="fa fa-power-off fa-2x" aria-hidden="true" style="color:red"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

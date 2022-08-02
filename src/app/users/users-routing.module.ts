@@ -8,7 +8,8 @@ import { InsurerComponent } from './insurer/insurer.component';
 export const routes: Routes = [
   // {path:'buyer',component:BuyerComponent},
   {path:'buyer',loadChildren:()=>import('./buyer/buyer.module').then(m=>m.BuyerModule)},
-  {path:'broker',component:BrokerComponent},
+  // {path:'broker',component:BrokerComponent},
+  {path:'broker',loadChildren:()=>import('./broker/broker.module').then(m=>m.BrokerModule)},
   {path:'insurer',component:InsurerComponent},
   {path:'404',component:Error404Component}
 ];
