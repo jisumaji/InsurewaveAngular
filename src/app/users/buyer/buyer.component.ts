@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {UsersRoutingModule} from '../users-routing.module'
-import { RouterModule } from '@angular/router';
+import { UserDetailsService } from 'src/app/home/user-details.service';
+
 @Component({
   selector: 'app-buyer',
   templateUrl: './buyer.component.html',
@@ -8,9 +8,15 @@ import { RouterModule } from '@angular/router';
 })
 export class BuyerComponent implements OnInit {
 
-  constructor() { }
+  constructor(private user: UserDetailsService) { }
 
   ngOnInit(): void {
+    // this.user.emitData.subscribe(result => {
+    //   console.log(result);
+    // });
+    this.user.eventEmitter.subscribe(result => {
+        console.log(result);
+      });
   }
 
 }

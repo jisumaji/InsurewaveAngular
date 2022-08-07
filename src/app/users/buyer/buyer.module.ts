@@ -9,6 +9,8 @@ import { PaymentsComponent } from './payments/payments.component';
 import { BuyerComponent } from './buyer.component';
 import { BuyerNavComponent } from './buyer-nav/buyer-nav.component';
 import { BuyerHomeComponent } from './buyer-home/buyer-home.component';
+import { UserDetailsService } from 'src/app/home/user-details.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { BuyerHomeComponent } from './buyer-home/buyer-home.component';
   imports: [
     CommonModule,
     BuyerRoutingModule,
+    HttpClientModule,
     RouterModule.forChild(routes)
-  ]
+  ],
+  providers:[UserDetailsService]
 })
 export class BuyerModule { }
