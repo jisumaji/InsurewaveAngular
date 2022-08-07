@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {UserDetailsService} from './user-details.service'
+import {UserDetailsService} from '../services/user-details.service'
 declare var $: any;
 @Component({
   selector: 'app-home',

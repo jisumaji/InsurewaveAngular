@@ -1,7 +1,7 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms'
 import { Router } from '@angular/router'
-import { UserDetailsService } from '../user-details.service'
+import { UserDetailsService } from '../../services/user-details.service'
 @Component({
   selector: 'app-login',
   templateUrl: 'login.component.html',
@@ -28,7 +28,6 @@ export class LoginComponent implements OnInit {
         this.role = val;
 
         this.user.sendData(this.user.getUserDetails(this.loginForm.get('email')!.value));
-        this.user.sendData1(this.user.getUserDetails(this.loginForm.get('email')!.value));
         // console.log(this.user.getUserDetails(this.loginForm.get('email')!.value));
 
         if (this.role === 'broker')
