@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'buyer-nav',
@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BuyerNavComponent implements OnInit {
 
+  @Input() buyerName:string='';
   constructor() { }
 
   ngOnInit(): void {
