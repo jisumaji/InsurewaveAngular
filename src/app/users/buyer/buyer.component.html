@@ -1,2 +1,2 @@
 <buyer-nav [buyerName]="buyerName"></buyer-nav>
-<router-outlet></router-outlet>
+<router-outlet (activate)="sendData($event)"></router-outlet>

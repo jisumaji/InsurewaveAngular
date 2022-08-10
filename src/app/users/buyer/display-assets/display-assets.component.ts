@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, Input, OnInit } from '@angular/core';
+import {BuyerComponent} from '../buyer.component'
+import {IAssets} from '../../../models/assets.model'
+import { BuyerService } from 'src/app/services/buyer.service';
 @Component({
   selector: 'app-display-assets',
   templateUrl: './display-assets.component.html',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DisplayAssetsComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private incoming:BuyerComponent,private buyer:BuyerService) { }
+  @Input() userId = '';
+  assets:IAssets[]=[];
   ngOnInit(): void {
+    this.assets=this.buyer.displayAssets(this.userId);
+    // console.log(this.assets);
   }
 
 }

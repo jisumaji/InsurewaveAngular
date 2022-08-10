@@ -1,10 +1,18 @@
 {
     "/user": {
-        "target": "https://localhost:7290/api/UserDetails",
+        "target": "https://localhost:7290/api/userdetails",
         "secure": false,
         "logLevel": "debug",
         "pathRewrite": {
             "^/user": ""
+        }
+    },
+    "/buyer":{
+        "target":"https://localhost:7290/api/Buyer",
+        "secure":false,
+        "logLevel":"debug",
+        "pathRewrite":{
+            "/buyer":""
         }
     }
 }

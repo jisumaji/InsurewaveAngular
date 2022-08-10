@@ -9,6 +9,7 @@ import { PaymentsComponent } from './payments/payments.component';
 import { BuyerComponent } from './buyer.component';
 import { BuyerNavComponent } from './buyer-nav/buyer-nav.component';
 import { BuyerHomeComponent } from './buyer-home/buyer-home.component';
+import { BuyerService } from '../../services/buyer.service'
 
 @NgModule({
   declarations: [
@@ -24,6 +25,6 @@ import { BuyerHomeComponent } from './buyer-home/buyer-home.component';
     BuyerRoutingModule,
     RouterModule.forChild(routes)
   ],
-  providers:[]
+  providers:[BuyerService]
 })
 export class BuyerModule { }

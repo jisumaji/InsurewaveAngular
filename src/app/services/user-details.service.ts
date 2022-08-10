@@ -18,7 +18,7 @@ export class UserDetailsService {
   }
   private commonData:BehaviorSubject<IUserDetails>=new BehaviorSubject<IUserDetails>(this.userData);
   emitData:Observable<any>=this.commonData.asObservable();
-  eventEmitter:EventEmitter<any>=new EventEmitter<any>();
+  // eventEmitter:EventEmitter<any>=new EventEmitter<any>();
 
   constructor(private user: HttpClient) { }
 
@@ -29,7 +29,7 @@ export class UserDetailsService {
 
   login(userId: string, password: string): string | any {
     return this.user.get('user/' + userId + '/' + password, { responseType: 'text' })
-      .pipe(catchError(this.handleError<boolean>('getStudents')))
+      .pipe(catchError(this.handleError<boolean>('login')))
   }
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
