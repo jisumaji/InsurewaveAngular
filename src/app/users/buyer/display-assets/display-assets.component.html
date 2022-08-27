@@ -58,8 +58,8 @@
                             </td>
                         </ng-template>
                         <td>
-                            <a class="btn btn-primary btn-sm" style="border-radius:10px;" asp-action="Edit"
-                                asp-route-AssetId="@item.AssetId">Edit</a>
+                            <a class="btn btn-primary btn-sm" style="border-radius:10px;" routerLink="../edit"
+                                (click)="sendAssetId(item.assetId)">Edit</a>
                             <a class="btn btn-success btn-sm" style="border-radius:10px;" asp-controller="Buyer"
                                 asp-action="RequestToBroker" asp-route-AssetId="@item.AssetId">Request Broker</a>
 

@@ -30,7 +30,8 @@ export class LoginComponent implements OnInit {
         this.user.sendData(this.user.getUserDetails(this.loginForm.get('email')!.value));
         // console.log(this.user.getUserDetails(this.loginForm.get('email')!.value));
 
-        if (this.role === 'broker')
+        setTimeout(() => {
+          if (this.role === 'broker')
           this.route.navigate(['../../users/broker']);
         else if (this.role === 'buyer')
           this.route.navigate(['../../users/buyer']);
@@ -38,6 +39,8 @@ export class LoginComponent implements OnInit {
           this.route.navigate(['../../users/insurer']);
         else if (this.role === 'false')
           this.route.navigate(['../../users/404']);
+        }, 169);
+        
       });
     }
   }

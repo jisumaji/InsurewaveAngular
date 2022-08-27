@@ -4,6 +4,7 @@ import { IUserDetails } from '../../models/userDetails.model'
 import { DisplayAssetsComponent } from './display-assets/display-assets.component';
 import { PaymentsComponent } from './payments/payments.component';
 import { AddAssetsComponent } from './add-assets/add-assets.component';
+import { EditAssetComponent } from './edit-asset/edit-asset.component';
 @Component({
   selector: 'app-buyer',
   templateUrl: './buyer.component.html',
@@ -36,8 +37,8 @@ export class BuyerComponent implements OnInit {
       this.buyerName = this.buyerData.firstName;
     });
   }
-  sendData(comp: DisplayAssetsComponent|PaymentsComponent|AddAssetsComponent) {
-    if(comp instanceof DisplayAssetsComponent)
+  sendData(comp: DisplayAssetsComponent|PaymentsComponent|AddAssetsComponent|EditAssetComponent) {
+    if(comp instanceof DisplayAssetsComponent || comp instanceof EditAssetComponent)
     comp.userId = this.buyerData.userId;
-  }
+  }
 }
