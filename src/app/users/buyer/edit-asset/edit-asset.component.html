@@ -6,16 +6,24 @@
         <div class="card-body">
             <form id="form" [formGroup]="EditAssetForm" (ngSubmit)="editAsset()">
                 <input type="hidden" asp-for="AssetId" />
-                <!--
-                <div class="form-group">
-                    <label asp-for="CountryId" class="control-label" style="font-size:larger">Country</label>
-                    <select asp-for="CountryId" class="form-control" asp-items="ViewBag.CountryId"></select>  
+                <div class="form-outline">
+                    <label asp-for="countryId" class="control-label" style="font-size:larger">Country</label>
+                    <select id="countryId" class="form-control" (change)="update($event)" formControlName="countryId">
+                        <option *ngFor="let item of country" [value]="item.countryId">
+                            {{item.countryName}}
+                        </option>
+                    </select>
+                    <div class="text-danger" *ngIf="submitted && EditAssetForm.controls['countryId'].errors">
+                        <span *ngIf="EditAssetForm.controls['countryId'].errors['required']">
+                            asset name is required
+                        </span>
+
+                    </div>
                 </div>
-                -->
                 <div class="form-outline">
                     <label class="form-label" style="font-size:larger">Asset Name</label>
                     <div class="input-group">
-                        <input id="assetName" class="form-control" formControlName="assetName" pattern="^[A-Za-z]+$" />
+                        <input id="assetName" name="assetName" value="crane" class="form-control" formControlName="assetName" pattern="^[A-Za-z]+$"/>
 
                         <span class="text-danger"></span>
                     </div>
@@ -48,24 +56,20 @@
                 </div>
                 <div class="form-outline">
                     <label class="form-label" style="font-size:larger">Asset Type</label>
-                    <div class="input-group">
-                        <input id="type" class="form-control" formControlName="type" pattern="^[A-Za-z]+$" />
-
-                        <span class="text-danger"></span>
-                    </div>
-
+                    <select id="type" class="form-control" (change)="update2($event)" formControlName="type">
+                        <option *ngFor="let item of types" [value]="item.value">
+                            {{item.Text}}
+                        </option>
+                    </select>
                     <div class="text-danger" *ngIf="submitted && EditAssetForm.controls['type'].errors">
                         <span *ngIf="EditAssetForm.controls['type'].errors['required']">
-                            asset name is required
-                        </span>
-                        <span *ngIf="EditAssetForm.controls['type'].errors['pattern']">
-                            only characters are allowed
+                            asset type is required
                         </span>
                     </div>
                 </div>
-                <div class="d-flex">
+                <div class="d-flex my-4">
                     <div>
-                        <a asp-action="DisplayAssets" class="text-white btn btn-dark">Back</a>
+                        <a routerLink="/users/buyer/assets" class="text-white btn btn-dark mx-1">Back</a>
                     </div>
                     <div class="form-group ml-auto">
                         <input type="submit" value="Save" class="btn btn-primary" />

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { BuyerRoutingModule, routes } from './buyer-routing.module';
+import { BuyerRoutingModule,routes } from './buyer-routing.module';
 import { RouterModule } from '@angular/router'
 import { AddAssetsComponent } from './add-assets/add-assets.component';
 import { DisplayAssetsComponent } from './display-assets/display-assets.component';
@@ -12,6 +11,7 @@ import { BuyerHomeComponent } from './buyer-home/buyer-home.component';
 import { BuyerService } from '../../services/buyer.service';
 import { EditAssetComponent } from './edit-asset/edit-asset.component'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DeleteAssetComponent } from './delete-asset/delete-asset.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +21,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     PaymentsComponent,
     BuyerNavComponent,
     BuyerHomeComponent,
-    EditAssetComponent
+    EditAssetComponent,
+    DeleteAssetComponent
   ],
   imports: [
     CommonModule,
@@ -30,6 +31,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     RouterModule.forChild(routes)
   ],
-  providers: [BuyerService]
+  providers:[BuyerService]
 })
 export class BuyerModule { }

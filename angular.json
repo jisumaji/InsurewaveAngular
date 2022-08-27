@@ -110,5 +110,8 @@
       }
     }
   },
-  "defaultProject": "InsurewaveAngular"
+  "defaultProject": "InsurewaveAngular",
+  "cli": {
+    "analytics": "28ee6938-953b-4268-9e86-c86d7a5f60d3"
+  }
 }

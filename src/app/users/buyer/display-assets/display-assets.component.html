@@ -58,8 +58,7 @@
                             </td>
                         </ng-template>
                         <td>
-                            <a class="btn btn-primary btn-sm" style="border-radius:10px;" routerLink="../edit"
-                                (click)="sendAssetId(item.assetId)">Edit</a>
+                            <a class="btn btn-primary btn-sm" style="border-radius:10px;" routerLink="../edit" (click)="sendAssetId(item)">Edit</a>
                             <a class="btn btn-success btn-sm" style="border-radius:10px;" asp-controller="Buyer"
                                 asp-action="RequestToBroker" asp-route-AssetId="@item.AssetId">Request Broker</a>
 
@@ -69,8 +68,7 @@
 
 
                             <ng-template #elseBlock2>
-                                <a class="btn btn-danger btn-sm" style="border-radius:10px;" asp-action="DeleteOneAsset"
-                                    asp-route-AssetId="@item.AssetId">Delete</a>
+                                <a class="btn btn-danger btn-sm" style="border-radius:10px;" routerLink="../delete" (click)="sendAssetId(item)">Delete</a>
 
                             </ng-template>
                         </td>

@@ -7,9 +7,23 @@ import { ICountry } from '../models/countries.model'
   providedIn: 'root'
 })
 export class BuyerService {
-
-  private bsubject: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+  reloadCurrentRoute() {
+    throw new Error('Method not implemented.');
+  }
+  private assetData: IAssets ={
+    assetId: 0,
+    userId: "null",
+    countryId: 0,
+    assetName: "null",
+    priceUsd: 0,
+    type: "null",
+    request: "no"
+}
+  /*private bsubject: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   emitter: Observable<any> = this.bsubject.asObservable();
+  */
+  private commonData: BehaviorSubject<IAssets> = new BehaviorSubject<IAssets>(this.assetData);
+  emitter: Observable<any> = this.commonData.asObservable();
 
   constructor(private buyer: HttpClient) { }
 
@@ -47,64 +61,26 @@ export class BuyerService {
       .pipe(catchError(this.handleError('editAsset')))
 
   }
-  sendAssetId(assetId: number) {
-    this.bsubject.next(assetId);
+  sendAssetId(asset: IAssets) {
+    this.commonData.next(asset);
   }
-  // getCountries() {
-  //   let countries: ICountry[] = [];
-  //   this.buyer.get('/buyer/GetCountries', { responseType: 'json' }).pipe(catchError(this.handleError('getCountries')))
-  //     .subscribe((response: ICountry[] | any) => {
-  //       response.forEach((x: ICountry) => {
-  //         let temp: ICountry = {
-  //           countryId: x.countryId,
-  //           countryName: x.countryName,
-  //           rate: x.rate
-  //         }
-  //         countries.push(temp);
-  //       });
-  //     });
-  //   setTimeout(() => { 
-  //     console.log(countries);
-  //     return countries }, 2000);
-  // }
-  // async getCountries(): Promise<ICountry[]> {
-  //   let countries: ICountry[] = [];
-  //   await new Promise<ICountry[]>(resolve => {
-
-  //     this.buyer.get('/buyer/GetCountries', { responseType: 'json' }).pipe(catchError(this.handleError('getCountries')))
-  //       .subscribe((response: ICountry[] | any) => {
-  //         response.forEach((x: ICountry) => {
-  //           let temp: ICountry = {
-  //             countryId: x.countryId,
-  //             countryName: x.countryName,
-  //             rate: x.rate
-  //           }
-  //           countries.push(temp);
-  //         });
-  //       });
-  //     setTimeout(() => {
-  //       resolve(countries);
-  //     }, 500)
-  //   })
-  //   console.log(countries[0]);
-  //   return countries;
-  // }
-  async getCountries(): Promise<ICountry[]> {
-    let countries: ICountry[] = [];
-    
-     let result=await this.buyer.get('/buyer/GetCountries', { responseType: 'json' }).pipe(catchError(this.handleError('getCountries')))
-        .subscribe((response: ICountry[] | any) => {
-          response.forEach((x: ICountry) => {
-            let temp: ICountry = {
-              countryId: x.countryId,
-              countryName: x.countryName,
-              rate: x.rate
-            }
-            countries.push(temp);
-          });
-          return countries;
-        });
-    console.log(countries[0]);
-    return result;
+  getCountries() {
+    let countries:ICountry[]=[];
+    this.buyer.get('/buyer/GetCountries', { responseType: 'json' }).pipe(catchError(this.handleError('getCountries')))
+    .subscribe((response:ICountry[]|any)=>{
+      response.forEach((x:ICountry) => {
+        let temp:ICountry={
+          countryId :x.countryId,
+          countryName: x.countryName,
+          rate: x.rate
+        }
+        countries.push(temp);
+      });
+    });
+    return countries;
+  }
+  DeleteAsset (assetid:number){
+    const options = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.buyer.delete('/buyer/DeleteAsset'+"/"+assetid);
   }
 }
